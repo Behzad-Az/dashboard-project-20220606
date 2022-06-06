@@ -7,6 +7,19 @@ import './App.css';
 
 interface Props {};
 
+const renderSideBar = (activeMenu: boolean) : JSX.Element => {
+  return activeMenu ? 
+  (
+    <div className='w-72 fixed sidebar dark:bg-secondary-dark-bg bg-white'>
+      Sidebar
+    </div>
+  ) : (
+    <div className='w-0 dark:bg-secondary-dark-bg'>
+      Sidebar
+    </div>
+  );
+};
+
 const App: FC<Props> = () : JSX.Element => {
   const activeMenu: boolean = false;
   return (
@@ -27,17 +40,7 @@ const App: FC<Props> = () : JSX.Element => {
               </button>
             </TooltipComponent>
           </div>
-          {
-            activeMenu ? (
-              <div className='w-72 fixed sidebar dark:bg-secondary-dark-bg bg-white'>
-                Sidebar
-              </div>
-            ) : (
-              <div className='w-0 dark:bg-secondary-dark-bg'>
-                Sidebar
-              </div>
-            )
-          }
+          { renderSideBar(activeMenu) }
         </div>
       </BrowserRouter>
     </div>
