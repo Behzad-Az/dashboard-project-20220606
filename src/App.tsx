@@ -3,6 +3,29 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { FiSettings } from 'react-icons/fi';
 import { TooltipComponent } from '@syncfusion/ej2-react-popups';
 
+import {
+  Navbar,
+  Footer,
+  Sidebar,
+  ThemeSettings
+} from './components';
+import {
+  Ecommerce,
+  Orders,
+  Calendar,
+  Employees,
+  StackedChart,
+  PyramidChart,
+  Kanban,
+  Customers,
+  BarChart,
+  AreaChart,
+  PieChart,
+  FinancialChart,
+  ColorMapping,
+  ColorPicker,
+  Editor
+} from './pages';
 import './App.css';
 
 interface Props {};
@@ -11,7 +34,7 @@ const renderSideBar = (activeMenu: boolean) : JSX.Element => {
   return activeMenu ? 
   (
     <div className='w-72 fixed sidebar dark:bg-secondary-dark-bg bg-white'>
-      Sidebar
+      <Sidebar />
     </div>
   ) : (
     <div className='w-0 dark:bg-secondary-dark-bg'>
