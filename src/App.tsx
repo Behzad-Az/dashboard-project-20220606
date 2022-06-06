@@ -27,6 +27,7 @@ import {
   ColorPicker,
   Editor
 } from './pages';
+import { useAppContext } from './contexts/ContextProvider';
 import './App.css';
 
 interface Props {};
@@ -45,7 +46,7 @@ const renderSideBar = (activeMenu: boolean) : JSX.Element => {
 };
 
 const App: FC<Props> = () : JSX.Element => {
-  const activeMenu: boolean = true;
+  const { activeMenu } = useAppContext();
   return (
     <div>
       <BrowserRouter>
