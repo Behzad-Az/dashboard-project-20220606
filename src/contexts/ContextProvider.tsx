@@ -17,7 +17,9 @@ interface AppContextInterface {
   setActiveMenu: Dispatch<SetStateAction<boolean>>;
   isClicked: IsClickedInterface;
   setIsClicked: Dispatch<SetStateAction<IsClickedInterface>>;
-  handleClick: (clicked: ClickedButton) => void | null;
+  handleClick: (clicked: ClickedButton) => void;
+  screenSize: number;
+  setScreenSize: Dispatch<SetStateAction<number>>;
 };
 
 const initialState: IsClickedInterface = {
@@ -27,11 +29,12 @@ const initialState: IsClickedInterface = {
   notification: false
 };
 
-const AppContext = createContext<AppContextInterface>({ activeMenu: false, setActiveMenu: () => {}, isClicked: initialState, setIsClicked: () => {}, handleClick: () => {} });
+const AppContext = createContext<AppContextInterface>({ activeMenu: false, setActiveMenu: () => {}, isClicked: initialState, setIsClicked: () => {}, handleClick: () => {}, screenSize: 0, setScreenSize: () => {} });
 
 export const ContextProvider: FC<ContextProviderInterface> = ({ children }) => {
   const [activeMenu, setActiveMenu] = useState<boolean>(true);
   const [isClicked, setIsClicked] = useState<IsClickedInterface>(initialState);
+  const [screenSize, setScreenSize] = useState<number>(0);
   const handleClick = (clicked: string) : void => {
     setIsClicked({
       ...initialState,
@@ -45,7 +48,9 @@ export const ContextProvider: FC<ContextProviderInterface> = ({ children }) => {
         setActiveMenu,
         isClicked,
         setIsClicked,
-        handleClick
+        handleClick,
+        screenSize,
+        setScreenSize
       }}
     >
       {children}

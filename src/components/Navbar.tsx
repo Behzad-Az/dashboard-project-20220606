@@ -30,15 +30,31 @@ const NavButton: FC<NavButtonProps> = ({ title, customFunc, icon, color, dotColo
       <span 
         style={{ background: dotColor }}
         className='absolute inline-flex rounded-full h-2 w-2 right-2 top-2'
-      >
-        {icon}
-      </span>
+      />
+      {icon}
     </button>
   </TooltipComponent>
 );
 
 const Navbar: FC<NavbarProps> = () : JSX.Element => {
-  const { activeMenu, setActiveMenu, isClicked, setIsClicked, handleClick } = useAppContext();
+  const { activeMenu, setActiveMenu, isClicked, setIsClicked, handleClick, screenSize, setScreenSize } = useAppContext();
+
+  useEffect(() => {
+    const handleResize = () => setScreenSize(window.innerWidth);
+    window.addEventListener('resize', handleResize);
+    handleResize();
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  useEffect(() => {
+    if (screenSize <= 900) {
+      setActiveMenu(false);
+    }
+    else {
+      setActiveMenu(true);
+    }
+  }, [screenSize]);
+
   return (
     <div className='flex justify-between p-2 md:mx-6 relative'>
       <NavButton 
