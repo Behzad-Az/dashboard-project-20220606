@@ -1,10 +1,23 @@
 import React, { FC } from 'react';
+import { ChartComponent, SeriesCollectionDirective, SeriesDirective, Inject, Legend, Category, StackingColumnSeries, Tooltip } from '@syncfusion/ej2-react-charts';
 
-interface Props {};
+import { stackedCustomSeries, stackedPrimaryXAxis, stackedPrimaryYAxis } from '../../data/dummy';
 
-const Stacked: FC<Props> = () : JSX.Element => {
+interface Props {
+  width: string;
+  height: string;
+};
+
+const Stacked: FC<Props> = ({ width, height }) : JSX.Element => {
   return (
-    <div>Stacked</div>
+    <ChartComponent
+      width={width}
+      height={height}
+      highlightColor='red'
+    >
+      <Inject services={[Legend, Category, StackingColumnSeries, Tooltip]} />
+    </ChartComponent>
+    
   );
 };
 

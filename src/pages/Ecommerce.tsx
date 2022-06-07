@@ -106,6 +106,21 @@ const Ecommerce: FC<Props> = () : JSX.Element => {
                   color='blue'
                 />
               </div>
+              <div className='mt-10'>
+                <Button 
+                  color='white'
+                  backgroundColor='blue'
+                  text='Download Report'
+                  borderRadius='10px'
+                  size='xs'
+                />
+              </div>
+            </div>
+            <div className=''>
+              <StackedChart 
+                width='320px'
+                height='360px'
+              />
             </div>
           </div>
         </div>

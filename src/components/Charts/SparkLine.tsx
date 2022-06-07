@@ -24,7 +24,14 @@ const SparkLine: FC<Props> = ({ currentColor, id, type, height, width, data, col
       dataSource={data}
       xName='x'
       yName='yval'
-      type='Area'
+      type={type}
+      tooltipSettings={{
+        visible: true,
+        format: '${x}: data ${y}',
+        trackLineSettings: {
+          visible: true
+        }
+      }}
     >
       <Inject services={[SparklineTooltip]} />
     </SparklineComponent>
